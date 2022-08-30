@@ -25,8 +25,18 @@ class CLI
             end
         end
         
+        current_user = User.find_by_username(first_name: first_name, last_name: last_name)
+
+        if current_user == nil
+            puts "Hello!! It must be your first time! Nice to meet you!"
+            current_user = User.create_new({first_name: first_name, last_name: last_name})
+        else
+            puts "You are back again!!"
+        end
+
         Greeting.new(first_name: first_name, last_name: last_name)
 
+        # puts "#{current_user}" for debugging
         
         continue = 'y'
         validStatus = true
@@ -54,7 +64,7 @@ class CLI
                 validStatus = true
                 # Profile.new(name: username)
             elsif activity == '4'
-                puts "See you next time, #{username}!!"
+                puts "See you next time, #{current_user.first_name}!!"
                 validStatus = true
                 continue = 'N'
             else
