@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
     def self.find_by_username(first_name: first_name, last_name: last_name)
         user = find_by(first_name: first_name, last_name: last_name)
     end
+
+    def self.save
+        self.save
+    end
 end

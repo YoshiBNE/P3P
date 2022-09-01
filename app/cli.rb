@@ -48,16 +48,29 @@ class CLI
                 puts "What would you like to do today?"
                 puts ""
                 puts "1. Tell me know about yourself!"
-                puts "2. Maybe time to sign a song! Find lyrics for you!"
-                puts "3. Update your details"
+                puts "2. Weather Forcast"
+                puts "3. Check your details"
                 puts "4. Abort"
             end
             
             activity = gets.strip
             
             if activity == '1'
-                puts "Activity 1"
+                puts "Please let me know your date of birth in DD/MM/YYYY format."
+                current_user.birthday = gets.strip
+                current_user.age = Age.user_age(current_user.birthday)
                 
+                
+                puts "Please let me know which suburb and country your live in."
+                puts "Suburb:\n"
+                suburb = gets.strip
+                puts "\n"
+                puts "Country:\n"
+                country = gets.strip
+                
+
+                current_user.save
+
                 validStatus = true
             elsif activity == '2'
                 puts "Weather Forcast"
@@ -66,12 +79,16 @@ class CLI
                 suburb = gets.strip
                 puts "In which country?"
                 country = gets.strip
-                Weather.new(suburb, city)
+                Weather.new(suburb, country)
                 validStatus = true
             elsif activity == '3'
-                puts "Let me know about you."
+                puts "Your details"
+
+                puts current_user.first_name
+                puts current_user.last_name
+                puts current_user.age
                 validStatus = true
-                # Profile.new(name: username)
+                
             elsif activity == '4'
                 puts "See you next time, #{current_user.first_name}!!"
                 validStatus = true
