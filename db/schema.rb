@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 2) do
+
+  create_table "locations", force: :cascade do |t|
+    t.string "suburb_name"
+    t.string "current_weather"
+    t.string "tmr_weather"
+    t.integer "post_code"
+    t.string "best_hotel"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.integer "age"
-    t.string "suburb"
   end
 
 end

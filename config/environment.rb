@@ -9,3 +9,5 @@ ActiveRecord::Base.establish_connection(
 require_relative '../app/model/user'
 require_relative '../app/cli'
 require_relative '../app/greeting'
+require_relative '../app/weather'
+require_relative '../app/getrequester'

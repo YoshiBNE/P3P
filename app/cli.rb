@@ -3,7 +3,7 @@ class CLI
 
         f_validation = false
         l_validation = false
-        while f_validation == false || l_validation == false
+        while f_validation == false
             if f_validation == false
                 puts "Plese enter your first name."
                 first_name = gets.strip
@@ -13,7 +13,9 @@ class CLI
                     f_validation = true
                 end
             end
+        end
 
+        while l_validation == false
             if l_validation == false
                 puts "Please enter your last name."
                 last_name = gets.strip
@@ -55,12 +57,19 @@ class CLI
             
             if activity == '1'
                 puts "Activity 1"
+                
                 validStatus = true
             elsif activity == '2'
-                puts "Activity 2"
+                puts "Weather Forcast"
+                puts ""
+                puts "In which suburb do you want to know about weather?"
+                suburb = gets.strip
+                puts "In which country?"
+                country = gets.strip
+                Weather.new(suburb, city)
                 validStatus = true
             elsif activity == '3'
-                puts "Activity 3"
+                puts "Let me know about you."
                 validStatus = true
                 # Profile.new(name: username)
             elsif activity == '4'
