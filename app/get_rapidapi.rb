@@ -4,9 +4,9 @@ require 'openssl'
 
 class GetRapidapi
     
-    def initialize
+    def initialize(city, country)
 
-        url = URI("https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation?cityName=Sydney&countryName=Australia")
+        url = URI("https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation?cityName=#{city}&countryName=#{country}")
 
         http = Net::HTTP.new(url.host, url.port)
         http.use_ssl = true
